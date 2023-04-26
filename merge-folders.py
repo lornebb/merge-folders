@@ -1,5 +1,6 @@
 import os
 import shutil
+from tqdm import tqdm
 
 
 def main():
@@ -32,7 +33,9 @@ def main():
     folder_counter = 0
     total_files_moved = 0
 
-    for subfolder_name in unique_subfolder_names:
+    for subfolder_name in tqdm(
+        unique_subfolder_names, desc="Merging folders", unit="folder"
+    ):
         folder_counter += 1
         print(
             f"Processing folder {folder_counter} of {total_folders}: {subfolder_name}"
